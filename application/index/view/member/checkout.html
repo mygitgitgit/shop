@@ -1,0 +1,340 @@
+{extend name="index@common/layout" /}
+
+{block name="container" }
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="/html/index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="{:url('/html/cart')}">购物车</a></li>
+        <li><a href="{:url('/html/checkout')}">结账</a></li>
+    </ul>
+    <div class="row">
+        <div id="content" class="col-sm-12"><h1>结账</h1>
+            <div class="panel-group" id="accordion">
+                <form action="{:url('/html/mkOrder')}" method="post">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse"
+                                   href="#collapse-shipping-address" aria-expanded="false">第 1 步 货运地址 <i
+                                        class="fa fa-caret-down"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapse-shipping-address" class="panel-collapse collapse in" aria-expanded="true"
+                             style="">
+                            <div class="panel-body">
+                                    <div id="shipping-existing" style="display: block;">
+                                        <select class="form-control" name="address_id" id="input-address_id">
+                                            <option selected="selected" value="0">请选择收货地址</option>
+                                        </select>
+                                    </div>
+                                    <div class="radio">
+                                        <label class="btn btn-info" id="button-address-add">添加一个新地址</label>
+                                    </div>
+                                    <br>
+                                    <div style="display:none;" id="shipping-new">
+                                        <div class="form-group required">
+                                            <label for="input-username"
+                                                   class="col-sm-2 control-label">您的姓名</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="input-username"
+                                                       placeholder="您的姓名" value="" name="username">
+                                            </div>
+                                        </div>
+                                        <div data-sort="1" class="form-group required custom-field">
+                                            <label for="input-telephone"
+                                                   class="col-sm-2 control-label">手机号码</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="input-telephone"
+                                                       placeholder="手机号码" value="" name="telephone">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-company" class="col-sm-2 control-label">公司名称</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="input-company"
+                                                       placeholder="公司名称" value="" name="company">
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label for="input-region_id_1" class="col-sm-2 control-label">省/直辖市</label>
+                                            <div class="col-sm-2">
+                                                <select class="form-control" id="input-region_id_1" name="region_id_1" data-level="1">
+                                                    <option value=""> --- 请选择 ---</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <select class="form-control" id="input-region_id_2" name="region_id_2" data-level="2">
+                                                    <option value=""> --- 请选择 ---</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <select class="form-control" id="input-region_id_3" name="region_id_3" data-level="3">
+                                                    <option value=""> --- 请选择 ---</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="input-address"
+                                                       placeholder="地址" value="" name="address">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-postcode" class="col-sm-2 control-label">邮编</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="input-postcode"
+                                                       placeholder="邮编" value="" name="postcode">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-info pull-right" id="button-address-submit">提交</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a class="accordion-toggle collapsed" data-parent="#accordion"
+                                                       data-toggle="collapse" href="#collapse-shipping-method"
+                                                       aria-expanded="false">第 2 步 货运方式 <i class="fa fa-caret-down"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapse-shipping-method" class="panel-collapse collapse in" aria-expanded="true" style="">
+                            <div class="panel-body"><p>请选择一个货运方式。</p>
+                                {foreach $shipping_list as $shipping}
+                                <p><strong>{$shipping['title']}</strong></p>
+                                <div class="radio">
+                                    <label id="label-shipping_id-{$shipping['id']}" for="input-shipping_id-{$shipping['id']}" data-title="{$shipping['title']}">
+                                        <input type="radio" value="{$shipping['id']}" name="shipping_id" id="input-shipping_id-{$shipping['id']}">
+                                        {$shipping['intro']} - ￥<span id="shipping-price-{$shipping['name']}" data-name="{$shipping['name']}"></span></label>
+                                </div>
+                                {/foreach}
+                                <p><strong>添加订单备注</strong></p>
+                                <p>
+                                    <textarea class="form-control" rows="8" name="comment"></textarea>
+                                </p>
+                                <div class="buttons">
+                                    <div class="pull-right">
+                                        <input type="button" class="btn btn-primary" data-loading-text="正在加载..."
+                                               id="button-shipping-method" value="继续">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a class="accordion-toggle" data-parent="#accordion"
+                                                   data-toggle="collapse" href="#collapse-checkout-confirm"
+                                                   aria-expanded="true">第 3 步 确认订单 <i class="fa fa-caret-down"></i></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-checkout-confirm" class="panel-collapse collapse in" aria-expanded="true"
+                         style="">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-left"></td>
+                                        <td class="text-left">商品名称</td>
+                                        <td class="text-left">型号</td>
+                                        <td class="text-right">数量</td>
+                                        <td class="text-right">价格</td>
+                                        <td class="text-right">合计</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {foreach $product_list['data'] as $product}
+                                    <tr>
+                                        <td class="text-center">
+                                            <input type="hidden" name="products[]" value="{$product['id']}">
+                                            <img src="__ROOT__/thumb/product/{$product['image_thumb']}" alt="" style="max-height: 60px;">
+                                        </td>
+                                        <td class="text-left"><a
+                                                href="">{$product['title']}</a>
+                                        </td>
+                                        <td class="text-left">型号</td>
+                                        <td class="text-right">{$product['buy_quantity']}</td>
+                                        <td class="text-right">￥{$product['price']}</td>
+                                        <td class="text-right">￥{$product['total_price']}</td>
+                                    </tr>
+                                    {/foreach}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td class="text-right" colspan="5"><strong>商品总额:</strong></td>
+                                        <td class="text-right">￥<span id="span-total_price" data-total_price="{$product_list['total_price']}">{$product_list['total_price']}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right" colspan="5"><strong id="shipping-title">请选择货运方式</strong></td>
+                                        <td class="text-right">￥<span id="shipping-price"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right" colspan="5"><strong>订单总额:</strong></td>
+                                        <td class="text-right">￥<span id="span-order_price"> 0</span></td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="buttons">
+                                <div class="pull-right">
+                                    <input type="submit" data-loading-text="正在加载..." class="btn btn-primary" id="button-confirm" value="确认订单">
+                                </div>
+                            </div>
+                            <script type="text/javascript"></script>
+                        </div>
+                    </div>
+                </div>
+
+                    <input type="hidden" name="product_amount" id="input-product_amount" value="{$product_list['total_price']}">
+                    <input type="hidden" name="shipping_price" id="input-shipping_price" value="">
+                    <input type="hidden" name="order_amount" id="input-order_amount" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="appendJs"}
+
+<!--配送地址-->
+<script>
+//    获取地址列表展示
+    function addressListSet()
+    {
+        var url = config.site.urlRoot + 'member-address-list.html';
+        $.get(url, function(resp) {
+            $('#input-address_id option:gt(0)').remove();
+            $.each(resp, function(i, address) {
+                var html = '<option value="'+address.id+'"';
+                html += ('1'==address.is_default?' selected' : '');
+                html += '>';
+                html += address.username + ','
+                    + address.telephone + ','
+                    + address.region_title_1 + ','
+                    + address.region_title_2 + ','
+                    + address.region_title_3 + ','
+                    + address.address + ','
+                    + address.company + ','
+                    + address.postcode;
+                html += '</option>';
+
+                $('#input-address_id').append(html);
+            });
+        }, 'json');
+    }
+
+
+    // 获取子地区、数据层面
+    function regionList(parent_id, success)
+    {
+        var url = config.site.urlRoot + 'regions.html';
+        var data = {
+            type: 'child',
+            value: parent_id
+        };
+        $.get(url, data, function(resp){
+            if (success) {
+                success(resp);
+            }
+        }, 'json');
+    }
+
+    // 利用地区形成下拉列表，显示层面
+    function regionShow(level, parent_id)
+    {
+        regionList(parent_id, function(resp) {
+            // 拼凑option列表
+            var html = '';
+            $.each(resp, function (i, region) {
+                html += '<option value="' + region.id+'">';
+                html += region.title;
+                html += '</option>';
+            });
+            // 放入某个select中，由level确定
+            $('#input-region_id_' + level + ' option:gt(0)').remove();
+            $('#input-region_id_' + level).append(html);
+        });
+    }
+
+    $(function() {
+        // 已有的地址列表展示
+        addressListSet();
+
+        // 获取1级地区
+        regionShow(1, 1);
+        // 切换地区时
+        $('select[name^=region_id_]').change(function(){
+            if ('' == $(this).val()) return;
+            regionShow(+$(this).data('level')+1, $(this).val());
+            // 初始化一些未控制的地区列表，选择1，控制2，3之后的都是未控制的。
+            var maxLevel = +$('select[name^=region_id_]').size();
+            for(var i=+$(this).data('level')+2; i<=maxLevel; ++i) {
+                $('#input-region_id_' + i + ' option:gt(0)').remove();
+            }
+        });
+
+        $('#button-address-add').click(function() {
+           $('#shipping-new').show();
+        });
+
+        $('#button-address-submit').click(function(evt) {
+            var url = config.site.urlRoot + 'member-address-add.html';
+            var data = {
+                username: $('#input-username').val(),
+                telephone: $('#input-telephone').val(),
+                company: $('#input-company').val(),
+                region_id_1: $('#input-region_id_1').val(),
+                region_id_2: $('#input-region_id_2').val(),
+                region_id_3: $('#input-region_id_3').val(),
+                address: $('#input-address').val(),
+                postcode: $('#input-postcode').val()
+            };
+            $.post(url, data, function(resp) {
+                if (false == resp.error) {
+                    alert('添加成功');
+
+                    addressListSet();
+                    $('#shipping-new').hide();
+                }
+            }, 'json');
+            evt.preventDefault();
+        });
+    })
+</script>
+
+<!--运费-->
+<script>
+    $(function() {
+        // 计算运费
+        $('span[id^=shipping-price-]').each(function(i) {
+            var url = config.site.urlRoot + 'shipping-price.html';
+            var data = {
+                name: $(this).data('name')
+            };
+            $.get(url, data, function(resp) {
+                $(this).html(resp.price).parent().data('price', resp.price);
+            }.bind(this), 'json');
+        });
+
+        // 展示订单金额
+        $('label[id^=label-shipping_id-]').click(function(){
+            var order_price = +$(this).data('price') + +$('#span-total_price').data('total_price');
+            $('#span-order_price').html(order_price);
+            $('#shipping-price').html($(this).data('price'));
+            $('#shipping-title').html($(this).data('title'));
+
+            // 表单数据
+            $('#input-shipping_price').val($(this).data('price'));
+            $('#input-order_amount').val(order_price);
+        });
+    });
+
+</script>
+{/block}

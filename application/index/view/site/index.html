@@ -1,0 +1,624 @@
+{extend name="index@common/layout" /}
+
+{block name="container" }
+<div class="container">
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <div class="content_top">
+                <div id="slideshow0" class="owl-carousel slideshow">
+                    <div class="item">
+                        <a href="">
+                            <img src="__STATIC__/image/banner/banner-1.jpg" alt="banner2"
+                                 class="img-responsive"/>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="">
+                            <img src="__STATIC__/image/banner/banner-2.jpg" alt="banner2"
+                                 class="img-responsive"/>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="">
+                            <img src="__STATIC__/image/banner/banner-3.jpg" alt="banner3"
+                                 class="img-responsive"/>
+                        </a>
+                    </div>
+                </div>
+
+                <h2 class="widget-title">
+                    <span>最新商品</span>
+                </h2>
+                <div class="row" id="row-product-new">
+
+                </div>
+                <ul id="banner0" class="banners">
+                    <li class="item">
+                        <a href="">
+                            <img src="__STATIC__/image/banner/banner-1.jpg" alt="hengfu-xia"
+                                 class="img-responsive"/>
+                        </a>
+                    </li>
+                </ul>
+
+                <h2 class="widget-title">
+                    <span>最新商品</span>
+                </h2>
+                <div class="row">
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="" title=""
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥2,999.00</span>
+                                    <span class="price-old">￥3,799.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('80');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('80');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('80');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="普利邦欧美风时尚太阳镜男个性炫酷墨镜男潮驾驶镜男防眩光司机镜" title="普利邦欧美风时尚太阳镜男个性炫酷墨镜男潮驾驶镜男防眩光司机镜"
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥8,966.00</span>
+                                    <span class="price-old">￥5,399.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('79');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('79');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('79');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="普利邦欧美大框眼镜女优雅精致太阳镜女士潮2016前卫墨镜女驾驶镜" title="普利邦欧美大框眼镜女优雅精致太阳镜女士潮2016前卫墨镜女驾驶镜"
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥5,337.00</span>
+                                    <span class="price-old">￥8,896.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('78');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('78');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('78');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="普利邦欧美大框太阳镜女潮时尚百搭驾驶镜女偏光墨镜女气质简约潮" title="普利邦欧美大框太阳镜女潮时尚百搭驾驶镜女偏光墨镜女气质简约潮"
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥5,377.00</span>
+                                    <span class="price-old">￥8,899.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('77');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('77');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('77');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul id="banner1" class="banners">
+                    <li class="item">
+                        <a href="">
+                            <img src="__STATIC__/image/banner/banner-2.jpg" alt="233"
+                                 class="img-responsive"/>
+                        </a>
+                    </li>
+                </ul>
+
+                <h2 class="widget-title">
+                    <span>特价商品</span>
+                </h2>
+                <div class="row">
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="2016时尚墨镜 女士偏光太阳镜潮人欧美复古圆框眼镜驾驶镜" title="2016时尚墨镜 女士偏光太阳镜潮人欧美复古圆框眼镜驾驶镜"
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥7,770.00</span>
+                                    <span class="price-old">￥8,867.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('71');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('71');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('71');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="普利邦 欧美圆框黑色炫酷太阳镜男款圆框防紫外线墨镜前卫驾驶镜" title="普利邦 欧美圆框黑色炫酷太阳镜男款圆框防紫外线墨镜前卫驾驶镜"
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥3,199.00</span>
+                                    <span class="price-old">￥4,999.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('73');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('73');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('73');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="普利邦 欧美时尚大框优雅墨镜女款复古个性防强光太阳镜简约眼镜" title="普利邦 欧美时尚大框优雅墨镜女款复古个性防强光太阳镜简约眼镜"
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥2,999.00</span>
+                                    <span class="price-old">￥3,799.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('80');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('80');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('80');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-wrapper">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="__STATIC__/image/no_image.png"
+                                         alt="普利邦欧美个性太阳镜女款大框气质墨镜女潮驾驶镜防眩光司机镜" title="普利邦欧美个性太阳镜女款大框气质墨镜女潮驾驶镜防眩光司机镜"
+                                         class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <a href="">商品名称</a>
+                                </div>
+                                <div class="product-description">
+                                    <p>..</p>
+                                </div>
+                                <div class="product-rating">
+                        <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                    <span class="fa fa-stack">
+                          <i class="fa fa-star fa-stack-2x"></i>
+                        </span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-new">￥5,012.00</span>
+                                    <span class="price-old">￥8,766.00</span>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="add-to-cart" onclick="cart.add('76');">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>加入购物车</span>
+                                    </button>
+                                    <div class="ps-add-buyincang" id="btn-visible">
+                                        <button type="button" class="wishlist" onclick="wishlist.add('76');">
+                                            <i class="fa fa-heart-o"></i>
+                                            <span>收藏</span>
+                                        </button>
+                                        <button type="button" class="compare" onclick="compare.add('76');">
+                                            <i class="fa fa-bars"></i>
+                                            <span>对比</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="appendCss"}
+    <link href="__STATIC__/owl-carousel/owl.carousel.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="__STATIC__/owl-carousel/owl.transitions.css" type="text/css" rel="stylesheet" media="screen" />
+{/block}
+{block name="appendJs"}
+    <script src="__STATIC__/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+
+<!--幻灯片-->
+<script>
+$(function () {
+    $('#slideshow0').owlCarousel({
+        items: 1, //显示数量
+        loop: true, //循环滚动
+        autoplay: true, //自动播放
+        autoplayTimeout: 3000, //自动切换时间（毫秒）
+        autoplayHoverPause: true, //鼠标移动到图片上面时，是否暂停自动播放
+        autoplaySpeed: 300, //自动播放图片切换动画时长
+        navSpeed: 400, //左右切换按钮图片切换动画时长
+        dotsSpeed: 300, //点击图片下方黑点图片切换动画时长
+        nav: true, //是否显示左右切换按钮
+        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'], //左右切换按钮图标
+        dots: true, //是否显示图片下方黑点
+    });
+});
+</script>
+
+<!--最新商品-->
+<script>
+    $(function() {
+        var url = config.site.urlRoot + 'products.html';
+        var data = {
+            type: 'new', // 获取最新商品
+            limit: 4
+        };
+        $.get(url, data, function(resp) {
+            $('#row-product-new').empty();
+            $.each(resp.data, function(i, product) {
+                var html = '';
+                html += '<div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">';
+                html += '<div class="product-wrapper">';
+                html += '<div class="product-image">';
+                html += '<a href="">';
+                html += '<img src="__ROOT__/thumb/product/'+product.image_thumb+'" alt="产品图像" title="'+product.title+'" class="img-responsive"/>';
+                html += '</a>';
+                html += '</div>';
+                html += '<div class="product-info">';
+                html += '<div class="product-name">';
+                html += '<a href="">'+product.title+'</a>';
+                html += '</div>';
+                html += '<div class="product-description">';
+                html += '<p>..</p>';
+                html += '</div>';
+                html += '<div class="product-rating">';
+                for(var i=1, max=Math.ceil(Math.random()*5); i<=max; ++i) {
+                    html += '<span class="fa fa-stack">';
+                    html += '<i class="fa fa-star fa-stack-2x"></i>';
+                    html += '</span>';
+                }
+                html += '</div>';
+                html += '<div class="product-price">';
+                html += '<span class="price-new">￥'+product.price+'</span>';
+                html += '<span class="price-old">￥'+product.price_origin+'</span>';
+                html += '</div>';
+                html += '<div class="product-action">';
+                html += '<button type="button" class="add-to-cart" data-product_id="'+product.id+'">';
+                html += '<i class="fa fa-shopping-cart"></i>';
+                html += '<span>加入购物车</span>';
+                html += '</button>';
+                html += '<div class="ps-add-buyincang" id="btn-visible">';
+                html += '<button type="button" class="wishlist">';
+                html += '<i class="fa fa-heart-o"></i>';
+                html += '<span>收藏</span>';
+                html += '</button>';
+                html += '<button type="button" class="compare">';
+                html += '<i class="fa fa-bars"></i>';
+                html += '<span>对比</span>';
+                html += '</button>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $('#row-product-new').append(html);
+            });
+
+        }, 'json');
+    });
+</script>
+
+<!--添加到购物车-->
+<script>
+    $(function() {
+        // 全部的添加按钮
+        $('body').on('click', 'button.add-to-cart', function() {
+            // 添加到购物车
+            cart.add({
+                product_id: $(this).data('product_id'),
+                buy_quantity: '1',
+                success: function() {
+                    // 刷新迷你购物车
+                    cart.minicartRefresh();
+                }
+            });
+        });
+    })
+</script>
+{/block}

@@ -1,0 +1,139 @@
+{extend name="index@common/layout" /}
+
+{block name="container"}
+<div class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="">
+                <i class="fa fa-home"></i>
+            </a>
+        </li>
+        <li>
+            <a href="http://php.kang.com/test/s/index.php?route=checkout/cart">购物车内的商品</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <form action="{:url('/html/checkout')}" method="post">
+                <h1>购物车内的商品                &nbsp;(0.00kg)</h1>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <td class="text-center">
+                                <input type="checkbox" class="form-control" id="input-check-all" checked>
+                            </td>
+                            <td class="text-center">图片</td>
+                            <td class="text-left">商品名称</td>
+                            <td class="text-left">型号</td>
+                            <td class="text-left">数量</td>
+                            <td class="text-right">单价</td>
+                            <td class="text-right">总计</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {foreach $product_list['data'] as $i=>$product}
+                        <tr>
+                            <td class="text-center">
+                                <input type="checkbox" name="product[]" value="{$product['id']}" class="form-control" checked>
+                            </td>
+                            <td class="text-center">
+                                <a href="">
+                                    <img src="__ROOT__/thumb/product/{$product['image_thumb']}" alt="" title="" class="img-thumbnail" style="max-height: 50px;" />
+                                </a>
+                            </td>
+                            <td class="text-left">
+                                <a href="">{$product['title']}</a>
+                            </td>
+                            <td class="text-left"></td>
+                            <td class="text-left">
+                                <div class="input-group btn-block" style="max-width: 200px;">
+                                    <input type="text" name="" value="{$product['buy_quantity']}" size="1" class="form-control" id="input-buy_quantity-{$product['id']}"/>
+                                    <span class="input-group-btn">
+                            <button data-toggle="tooltip" title="更新" class="btn btn-primary button-update" data-product_id="{$product['id']}">
+                              <i class="fa fa-refresh"></i>
+                            </button>
+                            <button data-toggle="tooltip" title="移除" class="btn btn-danger button-remove" data-product_id="{$product['id']}">
+                              <i class="fa fa-times-circle"></i>
+                            </button>
+                          </span>
+                                </div>
+                            </td>
+                            <td class="text-right">￥{$product['price']}</td>
+                            <td class="text-right">￥{$product['total_price']}</td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="buttons">
+                <div class="pull-left">
+                    <a href="{:url('/html/index.html')}" class="btn btn-default">继续购物</a>
+                </div>
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-primary" value="去结账">
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{/block}
+
+{block name="appendJs"}
+<!--全选-->
+<script>
+    $(function() {
+        $('#input-check-all').click(function () {
+            $(':checkbox[name="selected[]"]').prop('checked', $(this).prop('checked'));
+        })
+    })
+</script>
+
+<!--更新， 删除-->
+<script>
+    $(function() {
+        $('button.button-update').click(function(evt) {
+            var url = 'http://shop.kang.com/cart-update.html';
+            var data = {
+                product_id: $(this).data('product_id'),
+                buy_quantity: $('#input-buy_quantity-'+$(this).data('product_id')).val()
+            };
+            $.post(url, data, function(resp) {
+                if (resp.error) {
+                    alert('更新失败');
+                } else {
+                    alert('更新成功');
+                    cart.minicartRefresh();
+                }
+            }, 'json');
+
+            evt.preventDefault();
+        });
+
+        $('button.button-remove').click(function(evt) {
+            var url = 'http://shop.kang.com/cart-remove.html';
+            var data = {
+                product_id: $(this).data('product_id')
+            };
+            $.post(url, data, function(resp) {
+//            $.post(url, data, (resp) => {
+                if (resp.error) {
+                    alert('删除失败');
+                } else {
+                    // 删除tr
+                    $(this).parents('tr').remove();
+                    cart.minicartRefresh();
+                    alert('删除成功');
+                }
+            }.bind(this), 'json');
+//            }, 'json');
+
+            evt.preventDefault();
+        });
+    })
+</script>
+{/block}

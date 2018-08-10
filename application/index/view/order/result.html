@@ -1,0 +1,98 @@
+{extend name="index@common/layout" /}
+
+{block name="container"}
+
+<div class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="">
+                <i class="fa fa-home"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">订单结果</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <div class="well">
+                <h2>{$order['sn']}:</h2>
+                <p>
+                    前边还有 <strong id="progress-number"></strong> 个订单需要处理。
+                    <br>
+                    订单处理结果：
+                    <strong id="order-status">处理中...</strong>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="{:url('/html/pay', ['id' => $order['id']])}" class="btn btn-default" style="display: none;" id="button-pay">立即支付</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="appendJs"}
+<!--轮询获取订单处理进度-->
+<script>
+
+    var sn = '{$order["sn"]}';
+
+    function orderProgress(sn)
+    {
+        var url = config.site.urlRoot + 'order-progress.html';
+        var data = {
+            sn: sn
+        };
+        $.get(url, data, function(resp) { //
+            // resp.finshed: false, resp.number: 76,
+            $('#progress-number').html(resp.number);
+            // 如果没完，则过500ms重新获取
+            if (! resp.finshed) {
+                setTimeout(function() {
+                    orderProgress(sn);
+                }, 500);
+            }
+        }, 'json');
+    }
+
+    $(function() {
+//        orderProgress(sn);
+    });
+
+
+    function orderStatus(sn)
+    {
+        var url = config.site.urlRoot + 'order-status.html';
+        var data = {
+            sn: sn
+        };
+        $.ajax({
+            type: 'get',
+            url: url,
+            data: data,
+            success: function (resp) {
+                $('#order-status').html(resp.result);
+                if (2 == resp.status) {
+                    $('#button-pay').show();
+                }
+            },
+            dataType: 'json',
+            timeout: 5000, // 超时时间5000ms, 5s
+            error: function(xhr, error) { // 请求失败时执行，超时就是失败了
+                if ('timeout' == error) {
+                    // 超时 重新请求
+                    orderStatus(sn);
+                }
+            }
+        });
+    }
+
+    $(function () {
+        orderStatus(sn);
+    });
+
+
+</script>
+{/block}

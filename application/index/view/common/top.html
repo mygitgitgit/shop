@@ -1,0 +1,56 @@
+<nav id="top">
+    <div class="container">
+        <div id="top-links" class="nav pull-right">
+            <ul class="list-inline">
+                <li>
+                    <a href=""> <i class="fa fa-phone"></i>
+                    </a>
+                    <span class="hidden-xs hidden-sm hidden-md">{$telephone}</span>
+                </li>
+                <li class="dropdown">
+                    <a href="" title="会员中心" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user"></i>
+                        <span class="hidden-xs hidden-sm hidden-md">会员中心</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                    {if condition="$Think.session.member"}
+                        <li>
+                            <a href="{:url('/html/member')}">{$Think.session.member.username|default='默认用户名'}</a>
+                        </li>
+                        <li>
+                            <a href="{:url('/html/logout')}" onclick="$('#form-logout').submit();return false;">会员退出</a>
+                            <form action="{:url('/html/logout')}" method="post" id="form-logout" style="display: none;"></form>
+                        </li>
+                    {else /}
+                        <li>
+                            <a href="{:url('/html/register')}">会员注册</a>
+                        </li>
+                        <li>
+                            <a href="{:url('/html/login')}">会员登录</a>
+                        </li>
+                    {/if}
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="" id="wishlist-total" title="收藏（0）">
+                        <i class="fa fa-heart"></i>
+                        <span class="hidden-xs hidden-sm hidden-md">收藏（0）</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" title="购物车">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="hidden-xs hidden-sm hidden-md">购物车</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" title="结账">
+                        <i class="fa fa-share"></i>
+                        <span class="hidden-xs hidden-sm hidden-md">结账</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

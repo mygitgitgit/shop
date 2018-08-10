@@ -1,0 +1,159 @@
+{extend name="index@common/layout" /}
+
+{block name="container" }
+<div class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="">
+                <i class="fa fa-home"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">我的账户</a>
+        </li>
+        <li>
+            <a href="">用户注册</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div id="content" class="col-sm-9">
+            <h1>用户注册</h1>
+            <p>
+                欢迎来到我们网站，如果您是新用户，请填写下面的表单进行注册。如果您已经是本站的会员，请您直接
+                <a href="{:url('/html/login')}">登录</a>
+                。
+            </p>
+            <ul class="nav nav-tabs">
+                <li class="{if condition="!isset($data['register_type']) || 'email'==$data['register_type']"}active{/if}">
+                    <a href="#tab-email-register" data-toggle="tab">E-Mail 注册</a>
+                </li>
+                <li class="{if condition="isset($data['register_type']) && 'telephone'==$data['register_type']"}active{/if}">
+                    <a href="#tab-telephone-register" data-toggle="tab">手机号码注册</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+
+                <div class="tab-pane {if condition="!isset($data['register_type']) || 'email'==$data['register_type']"}active{/if}" id="tab-email-register">
+                    <form action="{:url('/html/register')}" method="post" class="form-horizontal">
+                        {:token()}
+                        <fieldset id="account">
+                            <input type="hidden" name="register_type" value="email">
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-email">电子邮箱</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="email" value="{$data['email']|default=''}" placeholder="电子邮箱" id="input-email" class="form-control" />
+                                    {if condition="isset($message['email'])"}
+                                    <label for="input-email" class="text-danger">
+                                        {$message['email']}
+                                    </label>
+                                    {/if}
+                                </div>
+                            </div>
+
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-password">输入密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" value="" placeholder="输入密码" id="input-password" class="form-control" />
+                                    {if condition="isset($message['password']) && 'email'==$data['register_type']"}
+                                    <label for="input-email" class="text-danger">
+                                        {$message['password']}
+                                    </label>
+                                    {/if}
+                                </div>
+
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-confirm">确认密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="confirm" value="" placeholder="确认密码" id="input-confirm" class="form-control" />
+                                    {if condition="isset($message['confirm']) && 'email'==$data['register_type']"}
+                                    <label for="input-email" class="text-danger">
+                                        {$message['confirm']}
+                                    </label>
+                                    {/if}
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="buttons">
+                            <div class="pull-right">
+                                我已经阅读并同意
+                                <a href="" class="agree"> <b>隐私政策</b>
+                                </a>
+                                <input type="checkbox" name="agree" value="1" />
+                                {if condition="isset($message['agree']) && 'email'==$data['register_type']"}
+                                <label for="input-email" class="text-danger">
+                                    {$message['agree']}
+                                </label>
+                                {/if}
+                                &nbsp;
+                                <input type="submit" value="继续" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane {if condition="isset($data['register_type']) && 'telephone'==$data['register_type']"}active{/if}" id="tab-telephone-register">
+                    <form action="{:url('/html/register')}" method="post" class="form-horizontal">
+                        {:token()}
+                        <fieldset id="tel-account">
+                            <input type="hidden" name="register_type" value="telephone">
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-tel-telephone">手机号码</label>
+                                <div class="col-sm-10">
+                                    <input type="tel" name="telephone" value="{$data['telephone']|default=''}" placeholder="手机号码" id="input-tel-telephone" class="form-control" />
+                                    {if condition="isset($message['telephone'])"}
+                                    <label for="input-email" class="text-danger">
+                                        {$message['telephone']}
+                                    </label>
+                                    {/if}
+                                </div>
+                            </div>
+
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-tel-password">输入密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" value="" placeholder="输入密码" id="input-tel-password" class="form-control" />
+                                    {if condition="isset($message['password']) && 'telephone'==$data['register_type']"}
+                                    <label for="input-email" class="text-danger">
+                                        {$message['password']}
+                                    </label>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-tel-confirm">确认密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="confirm" value="" placeholder="确认密码" id="input-tel-confirm" class="form-control" />
+                                    {if condition="isset($message['confirm'])  && 'telephone'==$data['register_type']"}
+                                    <label for="input-email" class="text-danger">
+                                        {$message['confirm']}
+                                    </label>
+                                    {/if}
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        <div class="buttons">
+                            <div class="pull-right">
+                                我已经阅读并同意
+                                <a href="" class="agree"> <b>隐私政策</b>
+                                </a>
+                                <input type="checkbox" name="agree" value="1" />
+                                {if condition="isset($message['agree']) && 'telephone'==$data['register_type']"}
+                                <label for="input-email" class="text-danger">
+                                    {$message['agree']}
+                                </label>
+                                {/if}
+                                &nbsp;
+                                <input type="submit" value="继续" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {include file="common/member_menu" /}
+
+    </div>
+</div>
+{/block}

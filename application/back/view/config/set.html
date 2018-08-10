@@ -1,0 +1,143 @@
+{extend name="common/layout" /}
+
+{block name="content"}
+<div id="content">
+
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-set" data-toggle="tooltip" title="保存" class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                </button>
+                <a href="{:url('index')}" data-toggle="tooltip" title="取消" class="btn btn-default">
+                    <i class="fa fa-reply"></i>
+                </a>
+            </div>
+            <h1>配置项{if condition="$id"}编辑{else/}创建{/if}</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="{:url('site/index')}">首页</a>
+                </li>
+                <li>
+                    <a href="{:url('index')}">配置项</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-pencil"></i>
+                    配置项{if condition="$id"}编辑{else/}创建{/if}
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form action="{:url('set', ['id'=>$id])}" method="post" enctype="multipart/form-data" id="form-set" class="form-horizontal">
+                    {:token()}
+
+                    {if condition="$id"}
+                    <input type="hidden" name="id" value="{$id}">
+                    {/if}
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab-general" data-toggle="tab">基本信息</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-general">
+                            <div class="form-group ">
+                                <label class="col-sm-2 control-label" for="input-config_group_id">所属组</label>
+                                <div class="col-sm-10">
+                                    <select name="config_group_id" id="input-config_group_id" class="form-control" >
+                                        <option value="0">未分组</option>
+                                        {foreach $config_group_list as $config_group}
+                                        <option value="{$config_group['id']}" {if condition="isset($data['config_group_id']) && $config_group['id']==$data['config_group_id']"}selected{/if}>{$config_group['title']}</option>
+                                        {/foreach}
+                                    </select>
+                                    {if condition="isset($message['config_group_id'])"}
+                                    <label for="input-config_group_id" class="text-danger">{$message['config_group_id']}</label>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-2 control-label" for="input-input_type_id">元素类型</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="input_type_id" value="{$data['input_type_id']|default=''}" placeholder="元素类型" id="input-input_type_id" class="form-control" />
+                                    {if condition="isset($message['input_type_id'])"}
+                                    <label for="input-input_type_id" class="text-danger">{$message['input_type_id']}</label>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-2 control-label" for="input-title">配置名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="title" value="{$data['title']|default=''}" placeholder="配置名称" id="input-title" class="form-control" />
+                                    {if condition="isset($message['title'])"}
+                                    <label for="input-title" class="text-danger">{$message['title']}</label>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-2 control-label" for="input-name">配置项标志</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="name" value="{$data['name']|default=''}" placeholder="配置项标志" id="input-name" class="form-control" />
+                                    {if condition="isset($message['name'])"}
+                                    <label for="input-name" class="text-danger">{$message['name']}</label>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-2 control-label" for="input-value">配置值</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="value" value="{$data['value']|default=''}" placeholder="配置值" id="input-value" class="form-control" />
+                                    {if condition="isset($message['value'])"}
+                                    <label for="input-value" class="text-danger">{$message['value']}</label>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-2 control-label" for="input-sort">排序</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="sort" value="{$data['sort']|default=''}" placeholder="排序" id="input-sort" class="form-control" />
+                                    {if condition="isset($message['sort'])"}
+                                    <label for="input-sort" class="text-danger">{$message['sort']}</label>
+                                    {/if}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="title"}配置项{if condition="$id"}编辑{else/}创建{/if}{/block}
+
+{block name="appendCss"}
+{/block}
+
+{block name="appendJs"}
+<script src="__STATIC__/validate/jquery.validate.min.js"></script>
+<script src="__STATIC__/validate/additional-methods.min.js"></script>
+<script src="__STATIC__/validate/localization/messages_zh.min.js"></script>
+<script>
+    $(function() {
+        $('#form-set').validate({
+            // 定义规则
+            rules: {
+
+            },
+            // 定义错误消息
+            messages: {
+
+            },
+
+            errorClass: 'text-danger',
+        });
+    });
+</script>
+{/block}
