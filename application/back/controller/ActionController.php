@@ -23,6 +23,7 @@ class ActionController extends Controller
     public function setAction($id = null)
     {
 
+
         $this->assign('id', $id);
 
         # 获取请求对象
